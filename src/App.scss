@@ -13,7 +13,7 @@ body, html {
   top: 0;
   width: 100%;
   height: 100vh;
-  background-image: url("https://source.unsplash.com/collection/9040448/1920x1080");
+  background-image: url("https://source.unsplash.com/collection/183254/1920x1080");
   background-size: cover;
   position: absolute;
   z-index: -20;
@@ -47,4 +47,8 @@ body, html {
 .btn {
   width: 100%;
   padding: 1.375rem .75rem;
+}
+
+.MuiAlert-message {
+  padding: 10px 0 !important;
 }

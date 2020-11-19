@@ -1,12 +1,12 @@
-import React, {Component, useState} from 'react';
-import {BrowserRouter, Switch, Route, Redirect,} from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './App.scss';
 
 import AccountsComponent from './components/AccountsComponent/Accounts.component';
 import BrandComponent from "./components/Brand/Brand.component";
 import TextField from "@material-ui/core/TextField";
-import {Button} from "reactstrap";
-import {UserAuthService} from "./services/UserAuthService";
+import { Button } from "reactstrap";
+import { UserAuthService } from "./services/UserAuthService";
 import MuiAlert from "@material-ui/lab/Alert";
 
 const App = () => {
@@ -29,7 +29,7 @@ const App = () => {
                             </div>
                         </div>
                     </Route>
-                    <Route exact path='/accounts' component={AccountsComponent} />
+                    <Route exact path='/accounts' component={ AccountsComponent } />
                 </Switch>
             </BrowserRouter>
         </div>
@@ -42,9 +42,10 @@ export const Form = () => {
 
         const [email, setEmail] = useState("arno@investec.co.za");
         const [password, setPassword] = useState("arno");
-        const [success, setSuccess] = useState({message: ''});
-        const [error, setError] = useState({message: ''});
+        const [success, setSuccess] = useState({ message: '' });
+        const [error, setError] = useState({ message: '' });
         const [isLoggedIn, setLoggedIn] = useState({ loggedIn: false });
+
         function formValidator() {
             return email.length > 0 && password.length > 0;
         }
@@ -56,13 +57,13 @@ export const Form = () => {
                     if (typeof response.data.error === 'undefined') {
                         localStorage.setItem('status', JSON.stringify({ loggedIn: true }));
                         localStorage.setItem('userInformation', JSON.stringify(response.data));
-                        setSuccess({message: 'Access granted. Redirecting, Please wait...'});
+                        setSuccess({ message: 'Access granted. Redirecting, Please wait...' });
 
                         setTimeout(() => {
                             setLoggedIn({ loggedIn: true });
                         }, 3000);
                     } else {
-                        setError({message: response.data.message});
+                        setError({ message: response.data.message });
                     }
                 });
             } catch (e) {
@@ -89,7 +90,7 @@ export const Form = () => {
                 )}
 
                 <TextField value={email}
-                           onChange={e => setEmail(e.target.value)}
+                           onChange={ e => setEmail(e.target.value) }
                            variant="outlined"
                            margin="normal"
                            required
@@ -100,7 +101,7 @@ export const Form = () => {
                            autoFocus/>
 
                 <TextField value={password}
-                           onChange={e => setPassword(e.target.value)}
+                           onChange={ e => setPassword(e.target.value) }
                            variant="outlined"
                            margin="normal"
                            required
@@ -110,7 +111,7 @@ export const Form = () => {
                            type="password"
                            autoComplete="current-password"/>
 
-                <Button disabled={!formValidator()}
+                <Button disabled={ !formValidator() }
                         type="submit"
                         variant="contained"
                         color="primary">
@@ -118,4 +119,4 @@ export const Form = () => {
                 </Button>
             </form>
         )
-}
+};
